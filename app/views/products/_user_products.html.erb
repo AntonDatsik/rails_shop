@@ -1,0 +1,24 @@
+<% if !@products.empty? %>
+  <h3>Your products </h3>
+<% end %>
+<% @products.each do |product| %>          
+  <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading"><%= product.title %></div>
+        <div class="panel-body">
+          <p><%= product.description %> </p>
+          <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+          <p><%= product.price %> <span class="glyphicon <%= glyphicons_classes[product.currency] %>"></span> </p>
+          <%= link_to product_path(:product_id => product.id), method: :delete do %>
+            Delete product from store
+            <span class= "glyphicon glyphicon-minus"></span>
+          <% end %>
+          <br>
+          <%= link_to edit_product_path(:product_id => product.id) do %>
+            Edit
+            <span class= "glyphicon glyphicon-edit"></span>
+          <% end %>
+        </div>
+      </div>
+  </div>
+<% end %>

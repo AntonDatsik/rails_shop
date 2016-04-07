@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+		<h1>Create new product</h1>
+
+		<%= render 'form' %>
+
+	</div>
+  </div>
+</div>
+
+ <%= form_tag products_path, method: :get, remote: true do %> 
+      <%= text_field_tag 'ka', 'ka',  class: "form-control", placeholder: "Search products..." %>
+      <%= submit_tag 'Search', id: "search-hidden-button" %>
+    <% end %>

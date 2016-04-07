@@ -1,0 +1,7 @@
+$(document).ready(function() {
+	$(".del-item-button").bind("ajax:success", function() {
+		$(this).closest(".col-sm-4").remove()
+		$("span#count-products_in_cart").text("Cart(<%= products_count %>)")
+		$('#cart').effect('highlight', {color: "gray"}, 1000)
+	})
+})

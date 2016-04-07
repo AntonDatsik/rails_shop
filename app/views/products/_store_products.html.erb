@@ -1,0 +1,17 @@
+<% @products.each do |product| %>          
+  <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading"><%= product.title %></div>
+        <div class="panel-body">
+          <p><%= short_desc(product.description) %> </p>
+          <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+          <p><%= product.price %> <span class="glyphicon <%= glyphicons_classes[product.currency] %>"></span> </p>
+
+          <%= link_to line_items_path(:product_id => product.id), method: :post , remote: true do %>
+            Add to cart
+            <span class= "glyphicon glyphicon-plus"></span>
+          <% end %>
+        </div>
+      </div>
+  </div>
+<% end %>

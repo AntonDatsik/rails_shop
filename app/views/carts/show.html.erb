@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+	<h3> Products in cart </h3>
+	<hr>
+	<% @hash.each_pair do |key, value| %>
+		<% @line_item_id = key %>
+		<%= render value %>
+	<% end %>
+</div>
+
