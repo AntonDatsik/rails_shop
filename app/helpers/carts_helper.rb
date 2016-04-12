@@ -1,4 +1,5 @@
 module CartsHelper
+	include ProductsHelper
 	def current_cart
 		current_cart_id = session[:cart_id]
 		
@@ -18,5 +19,18 @@ module CartsHelper
 			return 'empty'
 		end
 		count
+	end
+
+	def products_cost
+		valute = "RUR"
+		sum = 0
+		current_cart.line_items.each do |line_item|
+			product = Product.find(line_item.product_id)
+			product_currency = product.currency
+			currency_conversion_value = 0
+			currency_conversion_value = currency_conversion[get_currency_by_int_value[product_currency]]
+			sum += product.price * currency_conversion_value
+		end
+		return sum
 	end
 end
